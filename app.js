@@ -2,6 +2,7 @@ const express = require("express");
 const ejs = require("ejs");
 const pdf = require("pdf-creator-node");
 const fs = require("fs");
+const { config } = require("process");
 
 const template = fs.readFileSync("./template/template.html","utf-8");
 const options = {
@@ -47,6 +48,6 @@ app.get("/register",function(req,res){
   res.render("register");
 });
 
-app.listen(3000, function() {
+app.listen(3000||process.env.PORT, function() {
   console.log("Server started on port 3000");
 });
